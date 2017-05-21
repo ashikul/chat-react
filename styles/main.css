@@ -1,6 +1,12 @@
-body {
-	background-color: peachpuff;
-}
-h1{
-	color: red;
+/*body {*/
+	/*background-color: peachpuff;*/
+/*}*/
+/*h1{*/
+	/*color: red;*/
+/*}*/
+.shopping-cart-demo{
+	border: 1px solid #000;
+	max-width: 600px;
+	background-color: beige;
+	font-size: 8px;
 }

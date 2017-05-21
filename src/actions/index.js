@@ -1,6 +1,9 @@
 import shop from '../api/shop'
+import backend from '../api/backend'
 import * as types from '../constants/ActionTypes'
 
+//TODO: the heck I add here
+//TODO: the heck I add here
 const receiveProducts = products => ({
   type: types.RECEIVE_PRODUCTS,
   products: products

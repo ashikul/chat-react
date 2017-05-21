@@ -27,11 +27,18 @@ import CartContainer from './CartContainer'
 //TODO:  possibly... chatbox container... but idk..
 const App = () => (
     <div>
-        <h2>Shopping Cart Example</h2>
-        <hr/>
-        <ProductsContainer />
-        <hr/>
-        <CartContainer />
+        <div className="shopping-cart-demo">
+            <h2>Shopping Cart Example</h2>
+            <hr/>
+            <ProductsContainer />
+            <hr/>
+            <CartContainer />
+        </div>
+        <div>
+            my chat example starting here
+
+            need 2 chatbox
+        </div>
     </div>
 )
 
