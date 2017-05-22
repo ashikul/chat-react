@@ -2,7 +2,8 @@ import database from './database.json'
 
 /*
  *
- * Object to mock http service and database
+ * Object to mock http service to backend
+ * or local db queries
  *
  * */
 
@@ -11,46 +12,50 @@ let ApiService = {
     populateMockDatabase () {
         this.database = this.getSeedDatabase();
 
+
         console.log('TESTING');
         console.log('TESTING');
         console.log('TESTING');
 
-        console.log(ApiService.getReceivingUserMessages("Laura", "Rob"));
+
+
     },
     getSeedDatabase () {
         return database;
     },
-    getReceivingUserIsTyping (user, receivingUser){
+
+    getReceivingUserIsTyping (convoId, receivingUser){
+        return this.database.conversations.find(object => object.id === convoId).areTyping.find(object => object.user === receivingUser).isTyping;
+    },
+    setUserIsTyping (convoId, user, boolean){
+        this.database.conversations.find(object => object.id === convoId).areTyping.find(object => object.user === user).isTyping = boolean;
+    },
+
+    getMessagesForConversation (convoId){
+        return this.database.conversations.find(object => object.id === convoId).messages;
+    },
+    pushNewMessageToConversation (convoId, user, text, time){
+        this.database.conversations.find(object => object.id === convoId).messages.push({
+            message: text,
+            time: time,
+            user: user
+        })
+    },
+    getConvoId  (user, receivingUser){
         let userData = this.getUsersData(user);
-        let isReceivingUserTyping = userData.receivingUserList.find(object => object.receivingUser === receivingUser).isTyping;
-        return isReceivingUserTyping;
+        let convoId = userData.receivingUserList.find(object => object.receivingUser === receivingUser).convoId;
+        return convoId;
     },
-    setReceivingUserIsTyping (user, receivingUser){
-        this.database.find(object => object.user === user).receivingUserList.find(object => object.receivingUser === receivingUser).isTyping = true;
-    },
+
     getUsersData(user){
-        return this.database.find(object => object.user === user);
+        return this.database.users.find(object => object.user === user);
     },
     setUserOnline(user){
-        this.database.find(object => object.user === user).isOnline = true;
+        this.database.users.find(object => object.user === user).isOnline = true;
     },
     setUserOffline(user){
-        this.database.find(object => object.user === user).isOnline = false;
+        this.database.users.find(object => object.user === user).isOnline = false;
     },
-    getReceivingUserMessages (user, receivingUser){
-        let userData = this.getUsersData(user);
-        let receivingUserMessages = userData.receivingUserList.find(object => object.receivingUser === receivingUser).messages;
-        return receivingUserMessages;
-    },
-    pushNewMessage (user, receivingUser, text, time){
-        this.database.find(object => object.user === user).receivingUserList.find(object => object.receivingUser === receivingUser).messages.push(
-            {
-                message: text,
-                time: time
-            }
-        );
-
-    }
 
 };
 
