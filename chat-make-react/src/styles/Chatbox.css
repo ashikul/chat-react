@@ -1,0 +1,12 @@
+.chatbox{
+	border: 1px solid #000;
+	width: 300px;
+}
+.chatbox-message-history{
+	border: 1px solid purple;
+	height: 200px;
+}
+.chatbox-input{
+	border: 1px solid blue;
+	height: 60px;
+}

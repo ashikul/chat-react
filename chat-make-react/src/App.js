@@ -1,19 +1,38 @@
 import React, {Component} from 'react';
-import './App.css';
-import Chatbox from 'Chatbox';
+import './styles/App.css';
+import Chatbox from './Chatbox';
+import ApiService from './ApiService';
+
+
+
+console.log('App.js');
+console.log(ApiService);
+ApiService.populate();
+// fetch('./database.json')
+//     .then((res) => res.json())
+//     .then((data) => {
+//         console.log('data:', data);
+//     });
 
 class App extends Component {
+
+    constructor(props) {
+        super(props)
+        this.userOne = "Laura";
+        this.userTwo = "Rob";
+    }
+
     render () {
         return (
             <div className="App">
-                <div className="App-header">
-                    <h2>Welcome to React</h2>
-                </div>
                 <p className="App-intro">
-                    To get started, edit <code>src/App.js</code> and save to reload.
+                    APP HEADER
                 </p>
-                test
-                <Chatbox/>
+                <div className="chatboxes-container">
+                    <Chatbox user={this.userOne} receivingUser={this.userTwo}/>
+                    <Chatbox user={this.userTwo} receivingUser={this.userOne}/>
+                </div>
+
             </div>
         );
     }

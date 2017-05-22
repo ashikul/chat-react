@@ -1,0 +1,70 @@
+[
+  {
+    "user": "Laura",
+    "isOnline": false,
+    "receivingUserList": [
+      {
+        "receivingUser": "Rob",
+        "isTyping": false,
+        "messages": [
+          {
+            "message": "Hi",
+            "time": "2012-04-23T18:25:43.511Z"
+          },
+          {
+            "message": "Hello",
+            "time": "2012-04-23T19:25:43.511Z"
+          }
+        ]
+      },
+      {
+        "receivingUser": "Bob",
+        "isTyping": false,
+        "messages": [
+          {
+            "message": "Hi",
+            "time": "2012-04-23T18:25:43.511Z"
+          },
+          {
+            "message": "Hello",
+            "time": "2012-04-23T19:25:43.511Z"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "user": "Rob",
+    "isOnline": false,
+    "receivingUserList": [
+      {
+        "receivingUser": "Laura",
+        "isTyping": true,
+        "messages": [
+          {
+            "message": "Hi",
+            "time": "2012-04-23T18:25:45.511Z"
+          },
+          {
+            "message": "Hello",
+            "time": "2012-04-23T19:25:49.511Z"
+          }
+        ]
+      },
+      {
+        "receivingUser": "Lauren",
+        "isTyping": false,
+        "messages": [
+          {
+            "message": "Hi",
+            "time": "2012-04-23T18:25:45.511Z"
+          },
+          {
+            "message": "Hello",
+            "time": "2012-04-23T19:25:49.511Z"
+          }
+        ]
+      }
+    ]
+  }
+]
