@@ -3,31 +3,21 @@ import './styles/App.css';
 import Chatbox from './Chatbox';
 import ApiService from './ApiService';
 
-
-
-console.log('App.js');
-console.log(ApiService);
-ApiService.populate();
-// fetch('./database.json')
-//     .then((res) => res.json())
-//     .then((data) => {
-//         console.log('data:', data);
-//     });
-
 class App extends Component {
 
-    constructor(props) {
-        super(props)
+    constructor (props) {
+        super(props);
         this.userOne = "Laura";
         this.userTwo = "Rob";
+        ApiService.populateMockDatabase();
     }
 
     render () {
         return (
-            <div className="App">
-                <p className="App-intro">
-                    APP HEADER
-                </p>
+            <div className="app">
+                <h2 className="app-header">
+                    Chatbox Screens
+                </h2>
                 <div className="chatboxes-container">
                     <Chatbox user={this.userOne} receivingUser={this.userTwo}/>
                     <Chatbox user={this.userTwo} receivingUser={this.userOne}/>
