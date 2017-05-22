@@ -1,18 +1,45 @@
-.chatbox{
+.chatbox {
 	border: 1px solid #000;
 	width: 400px;
 	padding: 5px;
 }
-.chatbox-message-history{
+
+.chatbox-message-history {
 	border: 1px solid purple;
 	height: 200px;
 	overflow-y: scroll;
-	padding: 5px;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-top: 5px;
+	padding-bottom: 20px;
 }
-.chatbox-input{
+
+.chatbox-input {
 	border: 1px solid blue;
 	height: 60px;
 	padding: 5px;
 }
 
+.receivingUserIsTypingField {
+	color: darkgray;
+	font-style: italic;
+	height: 20px;
+}
+
+.input-form {
+	display: flex;
+}
+
+.input-message {
+	flex: 2;
+	height: 20px;
+}
+
+.send-button {
+	background-color: aliceblue;
+}
+
+.send-button:disabled {
+	background-color: darkgray;
+}
 

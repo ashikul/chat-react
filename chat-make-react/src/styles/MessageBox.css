@@ -1,0 +1,13 @@
+.MessageBox{
+	padding: 2px;
+}
+.MessageBox-time{
+	color: darkgray;
+	font-size: 12px;
+}
+.MessageBox-user{
+	
+}
+.MessageBox-text{
+	word-wrap: break-word;
+}
