@@ -2,22 +2,28 @@
 	border: 1px solid #000;
 	width: 400px;
 	padding: 5px;
+	margin: 5px;
+	border-radius: 3px;
 }
 
 .chatbox-message-history {
-	border: 1px solid purple;
+	border: 1px solid black;
 	height: 200px;
 	overflow-y: scroll;
 	padding-left: 5px;
 	padding-right: 5px;
 	padding-top: 5px;
 	padding-bottom: 40px;
+	border-radius: 3px;
 }
 
 .chatbox-input {
-	border: 1px solid blue;
+	margin-top: 4px;
+	background-color: lightgrey;
+	border: 1px solid black;
 	height: 60px;
 	padding: 5px;
+	border-radius: 3px;
 }
 
 .receivingUserIsTypingField {
@@ -36,7 +42,7 @@
 }
 
 .send-button {
-	background-color: aliceblue;
+	background-color: cornflowerblue;
 }
 
 .send-button:disabled {
