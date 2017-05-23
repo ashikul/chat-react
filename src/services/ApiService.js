@@ -1,8 +1,8 @@
-import database from './database.json'
+import database from './mockDatabase.json'
 
 /*
  *
- * Object to mock http service to backend
+ * Object to mock a http service to backend
  * or local db queries
  *
  * */
@@ -11,14 +11,6 @@ let ApiService = {
     database: {},
     populateMockDatabase () {
         this.database = this.getSeedDatabase();
-
-
-        console.log('TESTING');
-        console.log('TESTING');
-        console.log('TESTING');
-
-
-
     },
     getSeedDatabase () {
         return database;
@@ -43,7 +35,7 @@ let ApiService = {
     },
     getConvoId  (user, receivingUser){
         let userData = this.getUsersData(user);
-        let convoId = userData.receivingUserList.find(object => object.receivingUser === receivingUser).convoId;
+        let convoId = userData.conversationsWith.find(object => object.receivingUser === receivingUser).convoId;
         return convoId;
     },
 
