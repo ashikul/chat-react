@@ -1,12 +1,11 @@
-.app{
+.app {
 	padding: 10px;
 }
-.app-header{
 
-}
 .chatboxes-container {
 	display: flex;
 }
+
 @media screen and (max-width: 40em) {
 	.chatboxes-container {
 		display: block;
