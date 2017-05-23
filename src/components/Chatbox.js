@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types'
-import './styles/Chatbox.css';
+import '../styles/Chatbox.css';
 import MessageBox from './MessageBox'
-import ApiService from './ApiService';
+import ApiService from '../services/ApiService';
 
 class Chatbox extends Component {
 
@@ -21,6 +21,33 @@ class Chatbox extends Component {
         this.handleSendMessage = this.handleSendMessage.bind(this);
         this.handlePressEnter = this.handlePressEnter.bind(this);
         this.chatHistoryElement = {};
+        this.messageArrayKey = 0;
+    }
+
+    componentDidMount () {
+
+        ApiService.setUserOnline(this.props.user);
+
+        let convoId = ApiService.getConvoId(this.props.user, this.props.receivingUser);
+        let messages = ApiService.getMessagesForConversation(convoId);
+        let receivingUserIsTyping = ApiService.getReceivingUserIsTyping(convoId, this.props.receivingUser);
+
+        this.setState({
+            convoId: convoId,
+            messages: messages,
+            receivingUserIsTyping: receivingUserIsTyping,
+        });
+
+        //mocks socket connection polling
+        this.interval = setInterval(() => this.setState({
+            time: Date.now(),
+            receivingUserIsTyping: ApiService.getReceivingUserIsTyping(this.state.convoId, this.props.receivingUser)
+        }), 400);
+    }
+
+    componentWillUnmount () {
+        ApiService.setUserOffline(this.props.user);
+        clearInterval(this.interval);
     }
 
     handleSendMessage () {
@@ -28,7 +55,6 @@ class Chatbox extends Component {
             this.setState({message: '', buttonDisabled: true});
             ApiService.pushNewMessageToConversation(this.state.convoId, this.props.user, this.state.message, new Date().toString());
             ApiService.setUserIsTyping(this.state.convoId, this.props.user, false);
-            console.log(this.state.message);
             this.chatHistoryElement.scrollTop = this.chatHistoryElement.scrollHeight;
         }
     }
@@ -53,33 +79,10 @@ class Chatbox extends Component {
         }
     }
 
-    componentDidMount () {
-        ApiService.setUserOnline(this.props.user);
-        let convoId = ApiService.getConvoId(this.props.user, this.props.receivingUser);
-        let messages = ApiService.getMessagesForConversation(convoId);
-        let receivingUserIsTyping = ApiService.getReceivingUserIsTyping(convoId, this.props.receivingUser);
-
-        this.setState({
-            convoId: convoId,
-            messages: messages,
-            receivingUserIsTyping: receivingUserIsTyping,
-        });
-
-        //mocks socket connection polling
-        this.interval = setInterval(() => this.setState({
-            time: Date.now(),
-            receivingUserIsTyping: ApiService.getReceivingUserIsTyping(this.state.convoId, this.props.receivingUser)
-        }), 1000);
-    }
-
-    componentWillUnmount () {
-        ApiService.setUserOffline(this.props.user);
-        clearInterval(this.interval);
-    }
-
     render () {
         return (
             <div className="chatbox">
+
                 <h4>{this.props.user}'s Chatbox</h4>
 
                 <div className="chatbox-message-history" ref={(div) => {
@@ -87,10 +90,11 @@ class Chatbox extends Component {
                 }}>
                     {this.state.messages.map((object) =>
                         <MessageBox
+                            key={this.messageArrayKey++}
                             text={object.message}
                             time={object.time}
                             user={object.user}
-                            isYourMessage={this.props.user === object.user} />
+                            isYourMessage={this.props.user === object.user}/>
                     )}
                 </div>
                 <div className="chatbox-input">
@@ -114,8 +118,6 @@ class Chatbox extends Component {
                             value='Send'
                             onClick={this.handleSendMessage}
                             disabled={this.state.buttonDisabled}/>
-
-
                     </div>
 
                 </div>
@@ -131,8 +133,3 @@ Chatbox.propTypes = {
 };
 
 export default Chatbox;
-
-////TODO: input
-//TODO: message history
-//TODO: typing add to queue
-//TODO: subscribe async
