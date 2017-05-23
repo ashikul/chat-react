@@ -18,7 +18,7 @@ class App extends Component {
                 <h2 className="app-header">
                     Chatbox Screens
                 </h2>
-                <div className="chatboxs-container">
+                <div className="chatboxes-container">
                     <Chatbox user={this.userOne} receivingUser={this.userTwo}/>
                     <Chatbox user={this.userTwo} receivingUser={this.userOne}/>
                 </div>
