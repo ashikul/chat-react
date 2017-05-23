@@ -6,4 +6,7 @@ Setup: run `npm i` in current directory to install packages
 
 
 
+
+[Demo page](https://ashikul.github.io/chat-react)
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app)
