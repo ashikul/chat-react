@@ -13,6 +13,7 @@ const MessageBox = ({text, time, user, isYourMessage}) => (
 
     </div>
 );
+
 MessageBox.propTypes = {
     text: PropTypes.string.isRequired,
     time: PropTypes.string.isRequired,
