@@ -3,7 +3,7 @@
 }
 
 .chatboxes-container {
-	display: inline-block;
+	display: flex;
 }
 
 @media screen and (max-width: 30em) {

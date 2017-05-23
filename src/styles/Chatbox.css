@@ -21,7 +21,7 @@
 }
 
 .receivingUserIsTypingField {
-	color: darkgray;
+	color: dimgray;
 	font-style: italic;
 	height: 20px;
 }
