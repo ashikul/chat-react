@@ -14,7 +14,7 @@ const setup = (user = '', receivingUser = '') => {
         input: component.find('.input-message'),
         header: component.find('h4'),
     }
-}
+};
 
 describe('Chatbox component', () => {
 
