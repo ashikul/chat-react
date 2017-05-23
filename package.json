@@ -2,7 +2,7 @@
   "name": "chat-make-react",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://ashikul.github.io/chat-make-react",
+  "homepage": "https://ashikul.github.io/chat-react",
   "dependencies": {
     "moment": "^2.18.1",
     "prop-types": "^15.5.10",
